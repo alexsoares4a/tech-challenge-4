@@ -72,7 +72,16 @@ def generate_predictions(df, model, scaler, end_date, num_days):
 
 # Configuração do menu lateral
 st.sidebar.title("Navegação")
-menu = st.sidebar.radio("Ir para", ["Home", "Análise Exploratória dos Dados", "Modelo Preditivo", "Dashboard - Exploração e Insights", "MVP e Plano de Deploy", "Previsão do Preço do Petróleo", "Conclusão"])
+menu = st.sidebar.radio("Ir para", ["Home", "Análise Exploratória dos Dados", "Modelo Preditivo", "Dashboard - Exploração e Insights", "MVP e Plano de Deploy", "Previsão do Preço do Petróleo", "Conclusão", "Referências"])
+
+# Informação da equipe
+st.sidebar.markdown("""
+### Equipe Data Analytics – Grupo 51
+- **Alex Soares da Silva, RM354660**
+- **Jeiciane de Souza Paula, RM354161**
+- **Rodrigo Santos, RM354354**
+- **Victor Muraro Gonçalves de Brito, RM355848**
+""")
 
 # Seções da aplicação
 if menu == "Home":
@@ -394,7 +403,6 @@ elif menu == "MVP e Plano de Deploy":
 
 elif menu == "Previsão do Preço do Petróleo":
     st.title("Previsão do Preço do Petróleo Brent")
-    st.subheader("Previsão do Preço do Petróleo Brent")
     st.write("""
     Para obter a previsão do Preço de Fechamento do Petróleo Brent, por favor, selecione a data desejada. Para assegurar a máxima precisão das previsões, a escolha da data está limitada a um horizonte de até 15 dias a partir da data atual.
     """)
@@ -471,4 +479,21 @@ elif menu == "Conclusão":
 
     Para melhorias futuras, recomenda-se explorar a inclusão de variáveis exógenas adicionais que possam enriquecer o modelo preditivo, como indicadores econômicos mais amplos ou dados climáticos. Além disso, a expansão das funcionalidades do dashboard para incluir análises preditivas em tempo real poderia aumentar ainda mais o valor estratégico oferecido aos usuários.
 
+    """)
+
+elif menu == "Referências":
+    st.title("Referências")
+    
+    st.write("""
+    **Deep Learning Book.** Capítulo 51 – Arquitetura de Redes Neurais Long Short Term Memory (LSTM). Disponível em: https://www.deeplearningbook.com.br/arquitetura-de-redes-neurais-long-short-term-memory/. Acesso em 08 de novembro de 2024.
+    
+    **Dive Into Deep Learning.** Redes Neurais Modernas > 9.2 Memória Longa de Curto Prazo (LSTM). Disponível em: https://pt.d2l.ai/chapter_recurrent-modern/lstm.html. Acesso em: 08 de novembro de 2024.
+    
+    **Hyndman, R. J., & Athanasopoulos, G. (2018).** Forecasting: Principles and Practice. (2nd ed.) OTexts.
+    
+    **IPEADATA.** Preço por barril do petróleo bruto Brent (FOB). Disponível em: http://www.ipeadata.gov.br. Acesso em: 05 de novembro de 2024.
+    
+    **Medium.** Redes Neurais | LSTM. Disponível em: https://medium.com/turing-talks/turing-talks-27-modelos-de-predi%C3%A7%C3%A3o-lstm-df85d87ad210. Acesso em: 08 de novembro de 2024.
+    
+    **PyPI.** Download market data from Yahoo! Finance’s API. Disponível em: https://pypi.org/project/yfinance/. Acesso em: 05 de novembro de 2024.
     """)
