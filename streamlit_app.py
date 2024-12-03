@@ -153,20 +153,20 @@ elif menu == "Análise Exploratória dos Dados":
     """)
     # Exemplo de tabela em Streamlit
     data = {
-        "Volume de Dados": [1482],
+        "Volume de Dados": [1491],
         "Média": [73.15],
-        "Desvio Padrão": [19.18],
+        "Desvio Padrão": [19.12],
         "Mínimo": [19.33],
-        "Quartil 1": [62.29],
-        "Mediana": [74.67],
-        "Quartil 3": [84.67],
+        "Quartil 1": [62.37],
+        "Mediana": [74.51],
+        "Quartil 3": [84.61],
         "Máximo": [127.98],
-        "Coeficiente de Variação": ["26.2%"]
+        "Coeficiente de Variação": ["26.1%"]
     }
     st.table(pd.DataFrame(data))
 
     st.write("""
-    A dispersão dos dados pode ser considerada moderada se estiver abaixo de 15%, média entre 15% e 30% e alta acima de 30%. Para os dados de preços do Petróleo Brent, a variação é de 26,2%, indicando uma dispersão média dos dados em torno da média. Além disso, um desvio padrão superior indicaria uma maior volatilidade, com oscilações de preços mais acentuadas. Pelas análises descritivas realizadas, percebe-se uma certa variabilidade nos dados, sendo o desvio padrão de 19,18 dólares.
+    A dispersão dos dados pode ser considerada moderada se estiver abaixo de 15%, média entre 15% e 30% e alta acima de 30%. Para os dados de preços do Petróleo Brent, a variação é de 26,1%, indicando uma dispersão média dos dados em torno da média. Além disso, um desvio padrão superior indicaria uma maior volatilidade, com oscilações de preços mais acentuadas. Pelas análises descritivas realizadas, percebe-se uma certa variabilidade nos dados, sendo o desvio padrão de 19,12 dólares.
     
     Por meio da combinação do histograma com a curva de densidade (Gráfico 2), é possível visualizar o comportamento dos preços de fechamento do Petróleo Brent. A distribuição apresenta uma forma relativamente normal, o que reafirma visualmente uma certa estabilidade ao longo do período analisado, com variações em torno de um valor médio de 73,15 dólares. A discreta assimetria à direita, observada tanto no histograma quanto no boxplot, pode indicar uma possível tendência de alta a longo prazo.
     
@@ -199,15 +199,15 @@ elif menu == "Análise Exploratória dos Dados":
     - **H0:** há uma raiz unitária (ou seja, a série não é estacionária)
     - **H1:** não há uma raiz unitária (ou seja, a série é estacionária)
     
-    Ao aplicar o teste ADF aos dados de fechamento do petróleo Brent e considerando um nível de significância de 5%, o p-valor obtido foi de 0.4772. Este valor é maior do que o nível de significância escolhido, o que significa que não se rejeita a hipótese nula. Com um alto grau de confiança, conclui-se que a série apresenta uma raiz unitária e não é estacionária.
+    Ao aplicar o teste ADF aos dados de fechamento do petróleo Brent e considerando um nível de significância de 5%, o p-valor obtido foi de 0.4742. Este valor é maior do que o nível de significância escolhido, o que significa que não se rejeita a hipótese nula. Com um alto grau de confiança, conclui-se que a série apresenta uma raiz unitária e não é estacionária.
     
     **Tabela 2 - Teste de Inferência Estatística para o Preço de Fechamento do Petróleo Brent**
     """)
     # Exemplo de tabela em Streamlit
     data_adf = {
         "Teste": ["Dickey-Fuller (ADF)", "Shapiro-Wilk"],
-        "p-valor": [0.4772, 5.419368576173395e-11],
-        "Estatística de teste": [-1.6116, 0.98558061585351]
+        "p-valor": [0.4742, "3.699e-11"],
+        "Estatística de teste": [-1.6170, 0.9853368866314274]
     }
     st.table(pd.DataFrame(data_adf))
 
@@ -237,7 +237,7 @@ elif menu == "Análise Exploratória dos Dados":
     
     O comportamento para o dólar mostra uma similaridade positiva muito fraca em relação ao preço do Petróleo Brent. Essa relação pode ser influenciada por fatores como a política monetária internacional, as taxas de câmbio e o apetite de risco dos investidores, que afetam o fluxo de capitais e a valorização do dólar em relação ao preço do petróleo.
     
-    A análise de correlação de Pearson nos fornece uma visão geral das relações lineares entre diferentes variáveis. Esta correlação varia entre -1 e 1, onde um valor próximo de 1 indica uma forte correlação positiva (quando uma variável aumenta, a outra tende a aumentar também), um valor próximo de -1 indica uma forte correlação negativa (quando uma variável aumenta, a outra tende a diminuir), e um valor próximo de 0 indica uma correlação fraca ou nenhuma correlação. Aplicando as variáveis explicativas ao Preço de Fechamento do Petróleo Brent, observamos que o volume negociado apresenta uma correlação fraca de -0.194 com o preço de fechamento, indicando uma leve relação negativa, onde um aumento no volume pode estar levemente associado a uma diminuição no preço. Por outro lado, a variável dólar apresenta uma correlação fraca de 0.072 com o preço de fechamento, sugerindo uma relação positiva muito fraca. A Figura 1, abaixo, expressa a matriz de correlação para as variáveis.
+    A análise de correlação de Pearson nos fornece uma visão geral das relações lineares entre diferentes variáveis. Esta correlação varia entre -1 e 1, onde um valor próximo de 1 indica uma forte correlação positiva (quando uma variável aumenta, a outra tende a aumentar também), um valor próximo de -1 indica uma forte correlação negativa (quando uma variável aumenta, a outra tende a diminuir), e um valor próximo de 0 indica uma correlação fraca ou nenhuma correlação. Aplicando as variáveis explicativas ao Preço de Fechamento do Petróleo Brent, observamos que o volume negociado apresenta uma correlação fraca de -0.19 com o preço de fechamento, indicando uma leve relação negativa, onde um aumento no volume pode estar levemente associado a uma diminuição no preço. Por outro lado, a variável dólar apresenta uma correlação fraca de 0.072 com o preço de fechamento, sugerindo uma relação positiva muito fraca. A Figura 1, abaixo, expressa a matriz de correlação para as variáveis.
     
     **Figura 1 - Matriz de correlação de Pearson**
     """)
@@ -276,10 +276,10 @@ elif menu == "Modelo Preditivo":
     st.write("""
     Para prever o Preço de Fechamento do Petróleo Brent, decidimos não incluir as variáveis exógenas Volume e Dólar no modelo LSTM. A análise de correlação revelou que essas variáveis têm uma relação linear fraca com o preço do petróleo Brent, com correlações negativas e fracas para o volume e positivas, mas igualmente fracas, para o dólar. A inclusão dessas variáveis poderia aumentar a complexidade do modelo sem oferecer melhorias significativas na precisão das previsões. Portanto, focar o modelo LSTM exclusivamente na série temporal dos preços nos permite capturar de forma mais eficaz os padrões e tendências essenciais para previsões precisas.
     
-    Essa abordagem se mostrou bastante eficiente. O Gráfico 5 ilustra o desempenho do modelo LSTM, com 80% dos dados usados para treinamento e 20% para teste.
+    Essa abordagem se mostrou bastante eficiente. O Gráfico 6 ilustra o desempenho do modelo LSTM, com 80% dos dados usados para treinamento e 20% para teste.
     """)
     # Indicação para imagem: Adicione a imagem do Gráfico 5 aqui
-    st.image("imagens/grafico_06_lstm_previsao_preco_petroleo.png", caption="Gráfico 5 - Previsão do Preço de Fechamento do Petróleo Brent usando o Modelo LSTM")
+    st.image("imagens/grafico_06_lstm_previsao_preco_petroleo.png", caption="Gráfico 6 - Previsão do Preço de Fechamento do Petróleo Brent usando o Modelo LSTM")
 
     st.subheader("Avaliação do Desempenho do Modelo")
     st.write("""
@@ -323,7 +323,7 @@ elif menu == "Dashboard - Exploração e Insights":
     st.write("""
     **Período de Março de 2020 a Maio de 2023 (marco oficial da OMS).**
     
-    A pandemia de Covid-19 causou um impacto sem precedentes nos preços do petróleo, especialmente durante o primeiro semestre de 2020. Com a implementação de lockdowns em diversos países, as restrições à mobilidade e o fechamento de indústrias reduziram drasticamente a demanda global por petróleo. Em abril de 2020, a situação atingiu um marco histórico quando os contratos futuros do WTI chegaram a valores negativos e o Brent caiu abaixo de US$ 20 por barril, reflexo do excesso de oferta e da falta de capacidade de armazenamento. Esse colapso destacou a vulnerabilidade do mercado a mudanças abruptas na demanda. Contudo, a partir do segundo semestre de 2020, com a flexibilização das restrições, estímulos econômicos e o início da vacinação em massa, a recuperação econômica global impulsionou a retomada da demanda energética. Essa recuperação fez os preços do Brent subirem consistentemente, ultrapassando os US$ 50 por barril no final do ano, evidenciando a resiliência do mercado mesmo diante de crises severas.
+    A pandemia de Covid-19 causou um impacto sem precedentes nos preços do petróleo, especialmente durante o primeiro semestre de 2020. Com a implementação de lockdowns em diversos países, as restrições à mobilidade e o fechamento de indústrias reduziram drasticamente a demanda global por petróleo. Em abril de 2020, a situação atingiu um marco histórico quando os contratos futuros do WTI chegaram a valores negativos e o Brent caiu abaixo de US\$ 20 por barril, reflexo do excesso de oferta e da falta de capacidade de armazenamento. Esse colapso destacou a vulnerabilidade do mercado a mudanças abruptas na demanda. Contudo, a partir do segundo semestre de 2020, com a flexibilização das restrições, estímulos econômicos e o início da vacinação em massa, a recuperação econômica global impulsionou a retomada da demanda energética. Essa recuperação fez os preços do Brent subirem consistentemente, ultrapassando os US\$ 50 por barril no final do ano, evidenciando a resiliência do mercado mesmo diante de crises severas.
     """)
     # Indicação para imagem: Adicione a imagem da Figura 4 aqui
     st.image("imagens/figura_04_dashboard_preco_petroleo_covid-19.png", caption="Figura 4 - Painel da Variação do Preço do Petróleo - Pandemia Covid 19")
@@ -332,7 +332,7 @@ elif menu == "Dashboard - Exploração e Insights":
     st.write("""
     **Período de Setembro de 2008 a Março de 2009.**
     
-    Outro evento marcante foi a Crise Financeira Global de 2008-2009, que causou uma queda drástica no preço do barril de petróleo Brent. Durante esse período, iniciado com o colapso do Lehman Brothers em setembro de 2008, a recessão global resultante reduziu significativamente a demanda por petróleo. Os preços, que estavam em torno de US$ 140 por barril em julho de 2008, caíram para cerca de US$ 40 por barril em dezembro do mesmo ano.
+    Outro evento marcante foi a Crise Financeira Global de 2008-2009, que causou uma queda drástica no preço do barril de petróleo Brent. Durante esse período, iniciado com o colapso do Lehman Brothers em setembro de 2008, a recessão global resultante reduziu significativamente a demanda por petróleo. Os preços, que estavam em torno de US\$ 140 por barril em julho de 2008, caíram para cerca de US\$ 40 por barril em dezembro do mesmo ano.
     
     A recuperação começou gradualmente no início de 2009, acompanhando os estímulos econômicos e a estabilização dos mercados financeiros.
     """)
@@ -345,7 +345,7 @@ elif menu == "Dashboard - Exploração e Insights":
     
     Os Ataques de 11 de Setembro de 2001 e a subsequente Guerra ao Terror (2001-2003) também desempenharam um papel significativo nas variações do preço do petróleo Brent. Após os ataques, o mercado global foi tomado por incertezas, e os preços oscilaram com a crescente percepção de risco geopolítico, especialmente devido ao papel estratégico do Oriente Médio na produção de petróleo.
     
-    A escalada para a Guerra no Iraque em 2003 intensificou essas preocupações, levando a picos nos preços. Durante este período, as interrupções no fornecimento e o aumento da volatilidade marcaram o mercado. O preço do barril subiu de cerca de US$ 20 por barril no início de 2002 para mais de US$ 30 em meados de 2003, refletindo o impacto da instabilidade geopolítica.
+    A escalada para a Guerra no Iraque em 2003 intensificou essas preocupações, levando a picos nos preços. Durante este período, as interrupções no fornecimento e o aumento da volatilidade marcaram o mercado. O preço do barril subiu de cerca de US\$ 20 por barril no início de 2002 para mais de US\$ 30 em meados de 2003, refletindo o impacto da instabilidade geopolítica.
     """)
     # Indicação para imagem: Adicione a imagem da Figura 6 aqui
     st.image("imagens/figura_06_dashboard_preco_petroleo_11_setembro.png", caption="Figura 6 - Painel da Variação do Preço do Petróleo - Ataques de 11 Setembro e Guerra ao Terror")
@@ -356,7 +356,7 @@ elif menu == "Dashboard - Exploração e Insights":
     
     A Invasão do Kuwait pelo Iraque, ocorrida de agosto de 1990 a fevereiro de 1991, foi um evento crucial para as severas variações nos preços do petróleo Brent. Esse conflito, que culminou na Guerra do Golfo, interrompeu significativamente a produção de petróleo do Kuwait e gerou temores sobre a estabilidade de outras importantes regiões produtoras no Oriente Médio.
     
-    Durante o auge da crise, os preços do petróleo dispararam de cerca de US$ 18 por barril em julho de 1990 para mais de US$ 40 por barril em outubro do mesmo ano, marcando um dos períodos de maior alta em curto prazo na história do mercado petrolífero. Com o fim do conflito em fevereiro de 1991 e a retomada da produção, os preços começaram a se estabilizar.
+    Durante o auge da crise, os preços do petróleo dispararam de cerca de US\$ 18 por barril em julho de 1990 para mais de US\$ 40 por barril em outubro do mesmo ano, marcando um dos períodos de maior alta em curto prazo na história do mercado petrolífero. Com o fim do conflito em fevereiro de 1991 e a retomada da produção, os preços começaram a se estabilizar.
     """)
     # Indicação para imagem: Adicione a imagem da Figura 7 aqui
     st.image("imagens/figura_07_dashboard_preco_petroleo_invasao_kwait.png", caption="Figura 7 - Painel da Variação do Preço do Petróleo - Invasão do Kuwait pelo Iraque")
